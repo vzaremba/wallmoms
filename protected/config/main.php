@@ -35,7 +35,7 @@ return array(
 			'username' => 'root',
 			'password' => 'oneboy161185',
 			'charset' => 'utf8',
-            
+            'tablePrefix'=> false,
 		),
 		
 		'errorHandler'=>array(
