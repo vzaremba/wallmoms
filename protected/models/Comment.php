@@ -8,9 +8,7 @@ class Comment extends CActiveRecord
 	 * @var string $content
 	 * @var integer $status
 	 * @var integer $create_time
-	 * @var string $author
-	 * @var string $email
-	 * @var string $url
+	 * @var string $user_id
 	 * @var integer $post_id
 	 */
 	const STATUS_PENDING=1;
@@ -41,10 +39,7 @@ class Comment extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('content, author, email', 'required'),
-			array('author, email, url', 'length', 'max'=>128),
-			array('email','email'),
-			array('url','url'),
+			array('content', 'required'),
 		);
 	}
 
@@ -70,9 +65,7 @@ class Comment extends CActiveRecord
 			'content' => 'Comment',
 			'status' => 'Status',
 			'create_time' => 'Create Time',
-			'author' => 'Name',
-			'email' => 'Email',
-			'url' => 'Website',
+			'user_id' => 'Author',
 			'post_id' => 'Post',
 		);
 	}
@@ -104,9 +97,9 @@ class Comment extends CActiveRecord
 	public function getAuthorLink()
 	{
 		if(!empty($this->url))
-			return CHtml::link(CHtml::encode($this->author),$this->url);
+			return CHtml::link(CHtml::encode($this->user_id),$this->url);
 		else
-			return CHtml::encode($this->author);
+			return CHtml::encode($this->user_id);
 	}
 
 	/**

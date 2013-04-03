@@ -8,6 +8,5 @@ return array(
 		'create_time'=>1230952187,
 		'update_time'=>1230952187,
 		'author_id'=>1,
-		'tags'=>'yii, blog',
 	),
 );

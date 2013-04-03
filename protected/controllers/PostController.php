@@ -117,12 +117,11 @@ class PostController extends Controller
 	public function actionIndex()
 	{
 		$criteria=new CDbCriteria(array(
-			'condition'=>'status='.Post::STATUS_PUBLISHED,
+			'condition'=>'t.status='.Post::STATUS_PUBLISHED,
 			'order'=>'update_time DESC',
-			'with'=>'commentCount',
+            'with'=>'comments',
+			//'with'=>'commentCount',
 		));
-		if(isset($_GET['tag']))
-			$criteria->addSearchCondition('tags',$_GET['tag']);
 
 		$dataProvider=new CActiveDataProvider('Post', array(
 			'pagination'=>array(
@@ -147,20 +146,6 @@ class PostController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
-	}
-
-	/**
-	 * Suggests tags based on the current user input.
-	 * This is called via AJAX when the user is entering the tags input.
-	 */
-	public function actionSuggestTags()
-	{
-		if(isset($_GET['q']) && ($keyword=trim($_GET['q']))!=='')
-		{
-			$tags=Tag::model()->suggestTags($keyword);
-			if($tags!==array())
-				echo implode("\n",$tags);
-		}
 	}
 
 	/**

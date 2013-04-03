@@ -13,11 +13,31 @@
 		?>
 	</div>
 	<div class="nav">
-		<b>Tags:</b>
-		<?php echo implode(', ', $data->tagLinks); ?>
-		<br/>
-		<?php echo CHtml::link('Permalink', $data->url); ?> |
 		<?php echo CHtml::link("Comments ({$data->commentCount})",$data->url.'#comments'); ?> |
 		Last updated on <?php echo date('F j, Y',$data->update_time); ?>
 	</div>
+
+
+
+
+
+
+
+    <div id="comments">
+        <?php if($data->commentCount>=1): ?>
+
+            <?php $this->renderPartial('_comments',array(
+                'post'=>$data,
+                'comments'=>$data->comments,
+            )); ?>
+        <?php endif; ?>
+
+    </div><!-- comments -->
+    <br />
+
+
+
+
+    
+
 </div>

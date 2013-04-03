@@ -42,7 +42,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company. All Rights Reserved. <?php echo Yii::powered(); ?>
+		Copyright &copy; <?php echo date('Y'); ?> by onEBoY. All Rights Reserved. <?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 
 </div><!-- page -->
