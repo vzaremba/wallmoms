@@ -10,9 +10,10 @@ $this->breadcrumbs=array(
 <p>Please fill out the following form with your login credentials:</p>
 
 <div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'login-form',
 	'enableAjaxValidation'=>true,
+    'htmlOptions'=>array('class'=>'well'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -38,9 +39,19 @@ $this->breadcrumbs=array(
 		<?php echo $form->error($model,'rememberMe'); ?>
 	</div>
 
-	<div class="row submit">
-		<?php echo CHtml::submitButton('Login'); ?>
-	</div>
+    <?php echo $form->textFieldRow($model, 'username', array('class'=>'span3')); ?>
+    <?php echo $form->passwordFieldRow($model, 'password', array('class'=>'span3')); ?>
+    <?php echo $form->checkboxRow($model, 'rememberMe'); ?>
+
+
+    <?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>'Login')); ?>
+
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->
+
+
+
+
+
+
