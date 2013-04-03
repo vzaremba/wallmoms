@@ -33,8 +33,9 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=wallmoms',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'oneboy161185',
+			'password' => 'oneboy16118',
 			'charset' => 'utf8',
+            
 		),
 		
 		'errorHandler'=>array(
