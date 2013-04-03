@@ -52,6 +52,11 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
+
+        'bootstrap'=>array(
+            'class'=>'bootstrap.components.Bootstrap',
+        ),
+
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
