@@ -91,7 +91,7 @@ class SiteController extends Controller
         if (isset($service)) {
             $authIdentity = Yii::app()->eauth->getIdentity($service);
             $authIdentity->redirectUrl = Yii::app()->user->returnUrl;
-            $authIdentity->cancelUrl = $this->createAbsoluteUrl('site/login');
+            $authIdentity->cancelUrl = $this->createAbsoluteUrl('login');
 
             if ($authIdentity->authenticate()) {
                 $identity = new EAuthUserIdentity($authIdentity);
@@ -110,7 +110,7 @@ class SiteController extends Controller
             }
 
             // Something went wrong, redirect to login page
-            $this->redirect(array('site/login'));
+            $this->redirect(array('login'));
         }
 
         // default authorization code through login/password ..
