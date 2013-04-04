@@ -44,7 +44,7 @@ $this->breadcrumbs=array(
 
 <?php $this->endWidget(); ?>
 
-    <h2>Do you already have an account on one of these sites? Click the logo to log in with it here:</h2>
+    <h3>Войти при помощи:</h3>
     <?php
         $this->widget('ext.eauth.EAuthWidget', array('action' => 'site/login'));
     ?>

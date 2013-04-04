@@ -91,12 +91,24 @@ return array(
             'cache' => false, // Cache component name or false to disable cache. Defaults to 'cache'.
             'cacheExpire' => 0, // Cache lifetime. Defaults to 0 - means unlimited.
             'services' => array( // You can change the providers and their classes.
-                'google' => array(
+                /*'google' => array(
                     'class' => 'GoogleOpenIDService',
                 ),
                 'yandex' => array(
                     'class' => 'YandexOpenIDService',
+                ),*/
+                'vkontakte' => array(
+                    // register your app here: https://vk.com/editapp?act=create&site=1
+                    'class' => 'VKontakteOAuthService',
+                    'client_id' => '3546743',
+                    'client_secret' => 'CLIa1foM89BQUE9yXJfA',
                 ),
+                'facebook' => array(
+                    // register your app here: https://developers.facebook.com/apps/
+                    'class' => 'FacebookOAuthService',
+                    'client_id' => '...',
+                    'client_secret' => '...',
+                ), 
                 'twitter' => array(
                     // register your app here: https://dev.twitter.com/apps/new
                     'class' => 'TwitterOAuthService',
@@ -108,45 +120,15 @@ return array(
                     'class' => 'GoogleOAuthService',
                     'client_id' => '...',
                     'client_secret' => '...',
-                    'title' => 'Google (OAuth)',
+                    'title' => 'Google',
                 ),
                 'yandex_oauth' => array(
                     // register your app here: https://oauth.yandex.ru/client/my
                     'class' => 'YandexOAuthService',
                     'client_id' => '...',
                     'client_secret' => '...',
-                    'title' => 'Yandex (OAuth)',
-                ),
-                'facebook' => array(
-                    // register your app here: https://developers.facebook.com/apps/
-                    'class' => 'FacebookOAuthService',
-                    'client_id' => '...',
-                    'client_secret' => '...',
-                ),
-                'linkedin' => array(
-                    // register your app here: https://www.linkedin.com/secure/developer
-                    'class' => 'LinkedinOAuthService',
-                    'key' => '...',
-                    'secret' => '...',
-                ),
-                'github' => array(
-                    // register your app here: https://github.com/settings/applications
-                    'class' => 'GitHubOAuthService',
-                    'client_id' => '...',
-                    'client_secret' => '...',
-                ),
-                'live' => array(
-                    // register your app here: https://manage.dev.live.com/Applications/Index
-                    'class' => 'LiveOAuthService',
-                    'client_id' => '...',
-                    'client_secret' => '...',
-                ),
-                'vkontakte' => array(
-                    // register your app here: https://vk.com/editapp?act=create&site=1
-                    'class' => 'VKontakteOAuthService',
-                    'client_id' => '3546743',
-                    'client_secret' => 'CLIa1foM89BQUE9yXJfA',
-                ),
+                    'title' => 'Yandex',
+                ),           
                 'mailru' => array(
                     // register your app here: http://api.mail.ru/sites/my/add
                     'class' => 'MailruOAuthService',
