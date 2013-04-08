@@ -38,7 +38,7 @@ class User extends CActiveRecord
 		return array(
 			array('username, password, email', 'required'),
 			array('username, password, email', 'length', 'max'=>128),
-			array('profile', 'safe'),
+			//array('profile', 'safe'),
 		);
 	}
 
@@ -65,7 +65,7 @@ class User extends CActiveRecord
 			'username' => 'Username',
 			'password' => 'Password',
 			'email' => 'Email',
-			'profile' => 'Profile',
+			//'profile' => 'Profile',
 		);
 	}
 
