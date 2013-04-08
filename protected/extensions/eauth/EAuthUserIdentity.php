@@ -52,7 +52,7 @@ class EAuthUserIdentity extends CBaseUserIdentity {
 
             $socservice_user = Socservice::model()->findByAttributes(array(
                 'service' => $this->name,
-                'identify' => $this->id,
+                'identity' => $this->id,
             ));
 
             // Если такого пользователя еще нет, то регистрируем его
@@ -60,7 +60,7 @@ class EAuthUserIdentity extends CBaseUserIdentity {
 
                 $user = new User(array('username' => 'username', 'password' => '11111111', 'email' => 'aaaa@ukr.net'));
 
-                $socservice_user = new Socservice(array('service' => $this->name, 'identify' => $this->id, 'user_id' => $user->id));
+                $socservice_user = new Socservice(array('service' => $this->name, 'identity' => $this->id, 'user_id' => $user->id));
                 $socservice_user->save();
             }
             
