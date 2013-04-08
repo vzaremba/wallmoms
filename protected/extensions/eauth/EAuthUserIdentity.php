@@ -59,6 +59,7 @@ class EAuthUserIdentity extends CBaseUserIdentity {
             if (!$socservice_user) {
 
                 $user = new User(array('username' => 'username', 'password' => '11111111', 'email' => 'aaaa@ukr.net'));
+                $user->save();
 
                 $socservice_user = new Socservice(array('service' => $this->name, 'identity' => $this->id, 'user_id' => $user->id));
                 $socservice_user->save();
