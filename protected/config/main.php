@@ -27,6 +27,16 @@ return array(
         'ext.eauth.services.*',
 	),
 
+    'modules'=>array(
+        'gii'=>array(
+            'class'=>'system.gii.GiiModule',
+            'password'=>'111111',
+            'generatorPaths'=>array(
+                'bootstrap.gii',
+            ),
+        ),
+    ),
+
 	'defaultController'=>'post',
 
 	// application components
@@ -106,14 +116,14 @@ return array(
                 'facebook' => array(
                     // register your app here: https://developers.facebook.com/apps/
                     'class' => 'FacebookOAuthService',
-                    'client_id' => '...',
-                    'client_secret' => '...',
+                    'client_id' => '520570587985437',
+                    'client_secret' => 'ff36402eefe54aa1d328910d369a5e96',
                 ), 
                 'twitter' => array(
                     // register your app here: https://dev.twitter.com/apps/new
                     'class' => 'TwitterOAuthService',
-                    'key' => '...',
-                    'secret' => '...',
+                    'key' => '8Ce8LfJefZrbvVUPxHHiXA',
+                    'secret' => 'lrMqPqPT9rlxEWarj2nZdp5v0HUeAgjhlYmQdw2hw',
                 ),
                 'google_oauth' => array(
                     // register your app here: https://code.google.com/apis/console/
@@ -132,12 +142,6 @@ return array(
                 'mailru' => array(
                     // register your app here: http://api.mail.ru/sites/my/add
                     'class' => 'MailruOAuthService',
-                    'client_id' => '...',
-                    'client_secret' => '...',
-                ),
-                'moikrug' => array(
-                    // register your app here: https://oauth.yandex.ru/client/my
-                    'class' => 'MoikrugOAuthService',
                     'client_id' => '...',
                     'client_secret' => '...',
                 ),

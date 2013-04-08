@@ -48,6 +48,24 @@ class EAuthUserIdentity extends CBaseUserIdentity {
 			$this->id = $this->service->id;
 			$this->name = $this->service->getAttribute('name');
 
+
+
+            $socservice_user = Socservice::model()->findByAttributes(array(
+                'service' => $this->name,
+                'identify' => $this->id,
+            ));
+
+            // Если такого пользователя еще нет, то регистрируем его
+            if (!$socservice_user) {
+
+                $user = new User(array('username' => 'username', 'password' => '11111111', 'email' => 'aaaa@ukr.net'));
+
+                $socservice_user = new Socservice(array('service' => $this->name, 'identify' => $this->id, 'user_id' => $user->id));
+                $socservice_user->save();
+            }
+            
+
+
 			$this->setState('id', $this->id);
 			$this->setState('name', $this->name);
 			$this->setState('service', $this->service->serviceName);
