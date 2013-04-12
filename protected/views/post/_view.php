@@ -18,9 +18,29 @@
 	</div>
 
 
+<?php
+/*
+$this->widget('zii.widgets.CListView', array(
+        'dataProvider'=>$data->comments,
+        'itemView'=>'_comments',
+        'id'=>'commentViewList',
+        'template'=>'{items}',
+        'enablePagination'=>false,
+        'enableSorting'=>false
+     ));*/
+ 
+?>
 
-
-
+        <?php if(Yii::app()->user->hasFlash('commentSubmitted')): ?>
+            <div class="flash-success">
+                <?php echo Yii::app()->user->getFlash('commentSubmitted'); ?>
+            </div>
+        <?php else: ?>
+            <?php $this->renderPartial('/comment/_form',array(
+                'model' => new Comment(),
+                'action_url' => $data->url,
+            )); ?>
+        <?php endif; ?>
 
 
     <div id="comments">

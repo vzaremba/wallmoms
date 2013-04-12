@@ -28,7 +28,7 @@ class PostController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to access 'index' and 'view' actions.
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'createc'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated users to access all actions
@@ -183,7 +183,24 @@ class PostController extends Controller
 		$comment=new Comment;
 		if(isset($_POST['ajax']) && $_POST['ajax']==='comment-form')
 		{
-			echo CActiveForm::validate($comment);
+
+
+
+
+            $comment->attributes=$_POST['Comment'];
+            if($post->addComment($comment))
+			{
+				if($comment->status==Comment::STATUS_PENDING)
+					Yii::app()->user->setFlash('commentSubmitted','Thank you for your comment. Your comment will be posted once it is approved.');
+
+                //$this->redirect(Yii::app()->homeUrl);
+			}
+            else
+            {
+                echo CActiveForm::validate($comment);
+            }
+
+			
 			Yii::app()->end();
 		}
 		if(isset($_POST['Comment']))
@@ -193,9 +210,30 @@ class PostController extends Controller
 			{
 				if($comment->status==Comment::STATUS_PENDING)
 					Yii::app()->user->setFlash('commentSubmitted','Thank you for your comment. Your comment will be posted once it is approved.');
-				$this->refresh();
+				//$this->refresh();
+                $this->redirect(Yii::app()->homeUrl);
 			}
 		}
 		return $comment;
 	}
+
+    public function actionCreatec()
+    {
+            /*if(Yii::app()->request->isAjaxRequest)  // Вот тут мы проверяем если у нас это аякс запрос или нет
+            {*/
+                if(isset($_POST['Comment'])) {
+                    $model=new Comment;
+                    $model->attributes = $_POST['Comment'];
+
+                    if($model->validate()) {   // если все хорошо, и валидация прошла успешно сохраняем модель
+                        $model->save();
+                    } else {
+                        echo CActiveForm::validate($model);   // В случае ошибки валидации выводим ее
+                    }
+                }
+                Yii::app()->end();
+            /*} else {
+                $this->redirect(Yii::app()->homeUrl);
+            }*/
+    }
 }
